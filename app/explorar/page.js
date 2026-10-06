@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Nav from '@/components/Nav';
 import Link from 'next/link';
@@ -24,7 +24,7 @@ const CATEGORIES = [
   { name: 'Reconciliação', emoji: '🕊️' },
 ];
 
-export default function Explorar() {
+function ExplorarContent() {
   const searchParams = useSearchParams();
   const q = searchParams.get('q') || '';
   const [results, setResults] = useState(null);
@@ -113,5 +113,13 @@ export default function Explorar() {
         )}
       </main>
     </>
+  );
+}
+
+export default function Explorar() {
+  return (
+    <Suspense fallback={<div style={{ textAlign: 'center', padding: '50px', color: 'var(--ink)' }}>Carregando Segredos...</div>}>
+      <ExplorarContent />
+    </Suspense>
   );
 }
