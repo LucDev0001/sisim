@@ -15,23 +15,13 @@ export default function SearchBar() {
   };
 
   return (
-    <form onSubmit={submit} className="search-bar" style={{ display: 'flex', marginLeft: 'auto', marginRight: '16px' }}>
+    <form onSubmit={submit} className="search-bar-form">
       <input
         type="text"
         placeholder="Buscar assuntos..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="input"
-        style={{
-          padding: '6px 12px',
-          borderRadius: '20px',
-          border: '1px solid var(--line)',
-          background: 'var(--glass)',
-          color: 'var(--ink)',
-          fontSize: '0.85rem',
-          width: '180px',
-          outline: 'none',
-        }}
+        className="input search-input"
       />
       <button type="submit" style={{ display: 'none' }}>Buscar</button>
     </form>

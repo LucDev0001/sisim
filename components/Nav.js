@@ -15,12 +15,12 @@ export default function Nav({ tag = 'perguntas sem medo de rejeição' }) {
           Sim <span className="grad-text">Sim</span>
         </span>
       </Link>
-      <div className="nav-right" style={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+      <div className="nav-right">
         <OnlineCounter />
         <SearchBar />
         <span className="nav-tag">{tag}</span>
-        <Link href="/ranking" className="nav-link" style={{marginRight: '12px', marginLeft: '12px'}}>Ranking 👑</Link>
-        <Link href="/sobre" className="nav-link">Sobre</Link>
+        <Link href="/ranking" className="nav-link">Ranking 👑</Link>
+        <Link href="/sobre" className="nav-link hide-mobile">Sobre</Link>
         <GameHud />
       </div>
     </header>
