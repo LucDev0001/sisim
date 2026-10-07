@@ -23,10 +23,10 @@ export default function Reveal({ message, who, fromName }) {
         <b>sim</b> 💜
       </p>
 
-      {who === 'guest' && fromName && (
+      {who === 'guest' && (
         <div style={{ margin: '24px 0', padding: '16px', borderRadius: '16px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--violet)' }}>
           <small style={{ color: 'var(--ink-dim)', display: 'block', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Identidade Revelada</small>
-          Foi <b className="grad-text" style={{ fontSize: '1.6rem', display: 'block' }}>{fromName}</b> <br/>quem te perguntou!
+          Foi <b className="grad-text" style={{ fontSize: '1.6rem', display: 'block' }}>{fromName || 'Alguém misterioso 🕵️'}</b> <br/>quem te perguntou!
         </div>
       )}
 
