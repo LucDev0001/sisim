@@ -564,5 +564,5 @@ textarea.input.big { font-size: 1.2rem; font-weight: 500; min-height: 104px; }
 }
 
 @media (max-width: 600px) {
-  .nav-right .online-counter { display: none; /* Esconde no mobile se faltar espaço, ou pode manter */ }
+  /* Removed hidden online-counter because now we have space on the second row */
 }
