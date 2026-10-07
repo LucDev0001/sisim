@@ -35,6 +35,21 @@ export default function CreateForm() {
   async function submit(e) {
     e.preventDefault();
     if (loading) return;
+    
+    if (!fromName.trim()) {
+      const ok = window.confirm(
+        'Você deixou sua "Identidade / Dica" em branco!\n\n' +
+        'Se a pessoa disser SIM, ela não vai saber que foi você que perguntou.\n' +
+        'Deseja enviar como 100% Anônimo mesmo assim?'
+      );
+      if (!ok) {
+        const details = document.querySelector('.details');
+        if (details) details.open = true;
+        setTimeout(() => document.getElementById('fromName')?.focus(), 100);
+        return;
+      }
+    }
+
     setLoading(true);
     setError('');
     try {
