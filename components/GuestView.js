@@ -10,6 +10,7 @@ export default function GuestView({ id, question, expired }) {
   const [view, setView] = useState('ask');
   const [message, setMessage] = useState('');
   const [revealMsg, setRevealMsg] = useState(null);
+  const [revealName, setRevealName] = useState(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function GuestView({ id, question, expired }) {
         const data = await res.json();
         if (data.state === 'revealed') {
           setRevealMsg(data.message || null);
+          setRevealName(data.fromName || null);
           setView('revealed');
         } else setView('answered');
       } catch {}
@@ -45,6 +47,7 @@ export default function GuestView({ id, question, expired }) {
       saveGuest(id, { token: data.guestToken });
       if (data.revealed) {
         setRevealMsg(data.message || null);
+        setRevealName(data.fromName || null);
         setView('revealed');
       } else setView('answered');
     } catch (e) {
@@ -78,7 +81,7 @@ export default function GuestView({ id, question, expired }) {
   if (view === 'revealed') {
     return (
       <div className="card flow-card">
-        <Reveal message={revealMsg} who="guest" />
+        <Reveal message={revealMsg} who="guest" fromName={revealName} />
       </div>
     );
   }

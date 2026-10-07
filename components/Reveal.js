@@ -6,7 +6,7 @@ import { nativeShare, whatsappLink } from '@/lib/local';
 
 const VIRAL_TEXT = 'Acabei de ter um SIM SIM 🎉 Faça sua pergunta secreta, só aparece se os dois toparem:';
 
-export default function Reveal({ message, who }) {
+export default function Reveal({ message, who, fromName }) {
   async function share() {
     const url = window.location.origin;
     const ok = await nativeShare(url, VIRAL_TEXT);
@@ -22,6 +22,13 @@ export default function Reveal({ message, who }) {
         {who === 'owner' ? 'A outra pessoa também disse ' : 'A pessoa que perguntou também queria. Os dois disseram '}
         <b>sim</b> 💜
       </p>
+
+      {who === 'guest' && fromName && (
+        <div style={{ margin: '24px 0', padding: '16px', borderRadius: '16px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--violet)' }}>
+          <small style={{ color: 'var(--ink-dim)', display: 'block', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Identidade Revelada</small>
+          Foi <b className="grad-text" style={{ fontSize: '1.6rem', display: 'block' }}>{fromName}</b> <br/>quem te perguntou!
+        </div>
+      )}
 
       {message && (
         <div className="secret">
